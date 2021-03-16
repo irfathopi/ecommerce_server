@@ -2,21 +2,23 @@ const express  = require('express');
 const router = express.Router();
 const User = require('../models/user');
 
+
 router.post('/signin', (req,res) => {
 
 
 
 });
 
-router.post('/signup', (req, res) =>{
+
+router.post('/signup', (req, res) => {
 
     User.findOne({email: req.body.email})
-    .exac((error, user) =>{
+    .exac((error, user) => {
         if(user) return res.status(400).json({
             massage:'User already registered',
-        })
+            
+        });
 
-        
         const{
             firstName,
             lastName,
@@ -28,7 +30,7 @@ router.post('/signup', (req, res) =>{
             lastName,
             email,
             password,
-            userName: Math.random().toString()
+            username: Math.random().toString()
         });
 
         _user.save((error, data) =>{

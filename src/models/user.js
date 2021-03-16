@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
         max: 20,
     },
 
-    userName:{
+    username:{
         type:String,
         required: true,
         trima: true,
@@ -62,10 +62,10 @@ userSchema.virtual('password')
 });
 
 userSchema.methods = {
-    authinticate: function(password){
+    authenticate: function(password){
         return bcrypt.compareSync(password, this.hash_password)
     }
 }
 
 
-module.exports = mongoose.model('user',userSchema);
+module.exports = mongoose.model('User',userSchema);
